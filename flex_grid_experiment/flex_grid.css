@@ -1,0 +1,73 @@
+*{
+  font-family: verdana; 
+}
+.item {
+  border: 1px solid orange;
+  background: lightyellow;
+  padding: 10px;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+nav li {
+  padding: 0 0 10px 0;
+}
+ul a {
+  color: #000;
+  text-decoration: none;
+}
+ul a:hover {
+  color: #888;
+}
+
+/* below, start to layout content with narrow viewport width */
+.container > * {
+/*  targeting all child elements of the container  */
+  grid-column: 1 / span 12;
+/*  make the grid to start at col 1 and span to col 12. This is great for mobile layout  */
+}
+@media (min-width: 600px) {
+  .related-links {
+    grid-column: 1 / span 3;
+    grid-row: 3;
+/*   change the order of this to be over main content, so just define the order of the row   */
+  }
+  .ads {
+    grid-column: 1 / span 3;
+    grid-row: 4;
+  }
+  .main-content, .main-footer {
+    grid-column: 4 / span 9;
+/*   same with changing the order of row, now in col   */
+  }
+/*  next is adjust the look of nav not to make them stack  */
+  nav ul {
+    display: flex;
+    justify-content: space-around;
+  }
+  @media (min-width: 900px) {
+    .related-links {
+      grid-column: 1 / span 2;
+    }
+    .main-content {
+      grid-column: 3 / span 7;
+    }
+    .ads {
+     grid-column: 10 / span 3; 
+      grid-row: 3;
+    }
+    .main-footer {
+      grid-column: 1 / span 12;
+    }
+  }
+  
